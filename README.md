@@ -1,5 +1,5 @@
 <!-- badge-placeholder -->
-
+![small badge](https://img.shields.io/badge/pybind11%20test-passing-brightgreen)
 
 # pybind11-macos-test
 
