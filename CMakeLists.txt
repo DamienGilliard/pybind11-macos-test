@@ -33,8 +33,13 @@ endif()
 #check that the virtual environment is activated
 set(EXPECTED_ENV "pybind11-env")
 get_filename_component(VIRTUALENV_NAME ${VIRTUALENV} NAME)
-if(NOT VIRTUALENV_NAME STREQUAL EXPECTED_ENV)
-    message(FATAL_ERROR "Please create and activate the 'pybind11-env' environment by running from the root directory: \n conda env create -f ./environment.yml \n conda activate pybind11-env \n")
+
+if(CI_ACTION)
+    message(STATUS "Skipping virtual environment check as this is a CI action.")
+else()
+    if(NOT VIRTUALENV_NAME STREQUAL EXPECTED_ENV)
+        message(FATAL_ERROR "Please create and activate the 'pybind11-env' environment by running from the root directory: \n conda env create -f ./environment.yml \n conda activate pybind11-env \n")
+    endif()
 endif()
 
 add_subdirectory(submodules/pybind11)
