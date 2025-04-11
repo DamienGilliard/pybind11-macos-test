@@ -13,6 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: init submodules
+        run: |
+          git submodule update --init --recursive
+
       - name: activate environment
         uses: conda-incubator/setup-miniconda@v2
         with:
