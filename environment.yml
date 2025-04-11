@@ -1,0 +1,6 @@
+name: pybind11-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - cmake=3.20
