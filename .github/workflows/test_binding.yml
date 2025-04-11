@@ -39,7 +39,16 @@ jobs:
       - name: add small badge (of course ;))
         run: |
           if [ $? -eq 0 ]; then
-            echo "![small badge](https://img.shields.io/badge/pybind11%20test-passing-brightgreen)"
+            echo "![small badge](https://img.shields.io/badge/pybind11%20test-passing-brightgreen)" > badge.md
           else
-            echo "![small badge](https://img.shields.io/badge/pybind11%20test-failing-red)"
+            echo "![small badge](https://img.shields.io/badge/pybind11%20test-failing-red)" > badge.md
+          fi
+
+      - name: Update README.md with badge
+        run: |
+          if [ -f badge.md ]; then
+            sed -i.bak '/<!-- badge-placeholder -->/{n;d;}' README.md && rm README.md.bak
+            sed -i.bak '/<!-- badge-placeholder -->/r badge.md' README.md && rm README.md.bak
+          else
+            echo "badge.md not found. Skipping README update."
           fi
