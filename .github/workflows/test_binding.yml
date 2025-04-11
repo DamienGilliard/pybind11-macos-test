@@ -1,0 +1,40 @@
+name: test_binding
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: activate environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          auto-update-micromamba: true
+          environment-file: environment.yml
+          activate-environment: pybind11-env
+        
+      - name: build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+          cd ..
+
+      - name: test
+        run: |
+          python test.py
+        
+      - name: add small badge (of course ;))
+        run: |
+          echo "![small badge](https://img.shields.io/badge/pybind11%20test-passing-brightgreen)"
+          echo "![small badge](https://img.shields.io/badge/pybind11%20test-failing-red)"
+          echo "![small badge](https://img.shields.io/badge/pybind11%20test-unknown-lightgrey)"
