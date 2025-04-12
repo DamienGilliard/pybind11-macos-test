@@ -62,6 +62,9 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin ${GITHUB_HEAD_REF}
+          git checkout ${GITHUB_HEAD_REF}
+          git pull origin ${GITHUB_HEAD_REF}
           git add README.md
           git commit -m "feat: update README.md with test badge" || echo "No changes to commit"
           git push origin HEAD:${GITHUB_HEAD_REF}
