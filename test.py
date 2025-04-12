@@ -1,4 +1,4 @@
-from build import dummy_module  # Attempt to import the module
+from dummy_module import dummy_module  # Attempt to import the module
 
 def main():
     # This is a dummy function to ensure the module is imported correctly
