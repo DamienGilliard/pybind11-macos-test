@@ -46,6 +46,9 @@ add_subdirectory(submodules/pybind11)
 pybind11_add_module(dummy_module src/binding.cc
                                  src/cpp.cc)
 
+set_target_properties(dummy_module PROPERTIES
+                      LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../dummy_module"
+)
 target_compile_definitions(dummy_module PRIVATE
                             VERSION_INFO=${SIMPLE_VERSION_INFO}
                             )
