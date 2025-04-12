@@ -22,8 +22,22 @@ cmake ..
 make
 ```
 
-3) Run the python script:
+3) create the pip package
 ```bash
-cd .. # in case you are still in the build folder
-python test.py
+python -m build
+```
+
+4) install the pip package in the environment:
+```bash
+pip install --force-reinstall dist/dummy_module-0.0.1-py3-none-any.whl # The --force-reinstall is if you have already installed before, but doesn't cause problems if it is the first install
+```
+
+5) test the importation of the module:
+```bash
+python test/test_import_pip_package.py 
+```
+
+If you get this terminal output, it worked fine:
+```bash
+"This is a public method with integer: 1"
 ```
