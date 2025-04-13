@@ -10,5 +10,5 @@ PYBIND11_MODULE(dummy_module, m)
     py::class_<dummyNamespace::SmallClass>(m, "SmallClass")
         .def(py::init<int>(), py::arg("integer"))
         .def_readwrite("integer", &dummyNamespace::SmallClass::integer)
-        .def("publicMethod", &dummyNamespace::SmallClass::publicMethod, py::arg("integer"));
+        .def("publicMethod", &dummyNamespace::SmallClass::PublicMethod, py::arg("integer"));
 }

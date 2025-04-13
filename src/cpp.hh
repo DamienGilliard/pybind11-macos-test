@@ -11,9 +11,9 @@ namespace dummyNamespace
 
     public:
         int integer;
-        void publicMethod(int integer);
+        int PublicMethod(int integer);
     
     private:
-        void privateMethod(int integer);
+        void PrivateMethod(int integer);
     };
 }
