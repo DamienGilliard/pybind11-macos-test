@@ -41,3 +41,11 @@ If you get this terminal output, it worked fine:
 ```bash
 "This is a public method with integer: 1"
 ```
+
+## install in RhinoPython
+
+If you want to install the module in Rhino's python environment, assuming you are still in the root folder: 
+
+```bash
+/Users/<your_user_name>/.rhinocode/py39-rh8/python3.9 -m pip install --force-reinstall ./dist/dummy_module-0.0.1-py3-none-any.whl
+```
