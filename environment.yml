@@ -4,4 +4,5 @@ channels:
 dependencies:
   - python=3.9
   - cmake=3.20
-  - build=0.7.0
+  - pip:
+      - build==1.2.2
